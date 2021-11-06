@@ -27,6 +27,18 @@ urlpatterns += router.urls
 # coverage run --source='.' ./manage.py test .
 # coverage report
 # coverage html
+#json default
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+}
 
-
+#
+# after makemigrations with change model
+# 1)add default
+# 2) change default in model
 

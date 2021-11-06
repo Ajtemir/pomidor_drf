@@ -1,0 +1,4 @@
+/.coverage
+/htmlcov/
+vcs.xml
+.idea
