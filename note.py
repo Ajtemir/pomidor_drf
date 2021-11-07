@@ -42,3 +42,8 @@ REST_FRAMEWORK = {
 # 1)add default
 # 2) change default in model
 
+permission_classes = [IsAuthenticated]
+# network token session
+# authentication there is there isnt
+# authorization permissions
+
