@@ -52,3 +52,6 @@ permission_classes = [IsAuthenticated]
 #sorting test
 #delete test
 #testing one object getting
+#not delete test
+
+#

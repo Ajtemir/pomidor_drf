@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from rest_framework.viewsets import ModelViewSet
 
 from books.models import Book
+from books.permissions import IsOwnerOrStaffOrReadOnly
 from books.serializers import BooksSerializer
 
 
@@ -13,9 +14,13 @@ class BookViewSet(ModelViewSet):
     serializer_class = BooksSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filter_fields = ['price']
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsOwnerOrStaffOrReadOnly]
     search_fields = ['name', 'author_name']
     ordering_fields = ['price', 'author_name']
+
+    def perform_create(self, serializer):
+        serializer.validated_data['owner'] = self.request.user
+        serializer.save()
 
 
 def auth(request):
