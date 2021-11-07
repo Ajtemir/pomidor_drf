@@ -53,5 +53,6 @@ permission_classes = [IsAuthenticated]
 #delete test
 #testing one object getting
 #not delete test
+#own addings
 
 #
