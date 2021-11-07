@@ -47,3 +47,8 @@ permission_classes = [IsAuthenticated]
 # authentication there is there isnt
 # authorization permissions
 
+
+# !!!
+#sorting test
+#delete test
+#testing one object getting
