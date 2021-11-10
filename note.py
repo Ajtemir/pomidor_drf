@@ -54,5 +54,9 @@ permission_classes = [IsAuthenticated]
 #testing one object getting
 #not delete test
 #own addings
-
-#
+# source owner not
+#annotate in_bookmarks
+#middle rating
+# discount 8
+# price with discount
+# optimization sql s

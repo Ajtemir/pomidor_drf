@@ -9,10 +9,10 @@ from books.serializers import BooksSerializer
 
 class BookSerializerTestCase(TestCase):
     def test_ok(self):
-        user1 = User.objects.create(username='user_001')
-        user2 = User.objects.create(username='user_002')
-        user3 = User.objects.create(username='user_003')
-        book1 = Book.objects.create(name='test_book_1', price=25, author_name='author1')
+        user1 = User.objects.create(username='user_001', first_name='Ivan', last_name='Petrov')
+        user2 = User.objects.create(username='user_002', first_name='Ivan', last_name='Sidorov')
+        user3 = User.objects.create(username='user_003', first_name='1', last_name='2')
+        book1 = Book.objects.create(name='test_book_1', price=25, author_name='author1', owner=user1)
         book2 = Book.objects.create(name='test_book_2', price=251, author_name='author2')
         UserBookRelation.objects.create(user=user1, book=book1, like=True, rate=5)
         UserBookRelation.objects.create(user=user2, book=book1, like=True, rate=5)
@@ -32,18 +32,48 @@ class BookSerializerTestCase(TestCase):
                 'name': 'test_book_1',
                 'price': '25.00',
                 'author_name': 'author1',
-                'likes_count': 3,
+                # 'likes_count': 3,
                 'annotated_likes': 3,
-                'rating': '4.67'
+                'rating': '4.67',
+                'owner_name': 'user_001',
+                'readers': [
+                    {
+                        'first_name': 'Ivan',
+                        'last_name': 'Petrov'
+                    },
+                    {
+                        'first_name': 'Ivan',
+                        'last_name': 'Sidorov'
+                    },
+                    {
+                        'first_name': '1',
+                        'last_name': '2'
+                    },
+                ]
             },
             {
                 'id': book2.id,
                 'name': 'test_book_2',
                 'price': '251.00',
                 'author_name': 'author2',
-                'likes_count': 2,
+                # 'likes_count': 2,
                 'annotated_likes': 2,
-                'rating': '3.50'
+                'rating': '3.50',
+                'owner_name': '',
+                'readers': [
+                    {
+                        'first_name': 'Ivan',
+                        'last_name': 'Petrov'
+                    },
+                    {
+                        'first_name': 'Ivan',
+                        'last_name': 'Sidorov'
+                    },
+                    {
+                        'first_name': '1',
+                        'last_name': '2'
+                    },
+                ]
             },
         ]
         print('=================')
