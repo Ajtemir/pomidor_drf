@@ -60,3 +60,6 @@ permission_classes = [IsAuthenticated]
 # discount 8
 # price with discount
 # optimization sql s
+
+#10 lesson homework
+# test check расчёт который упадет при удалении
